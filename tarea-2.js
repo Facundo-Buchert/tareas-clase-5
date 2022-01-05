@@ -18,12 +18,12 @@ Ejemplo form:
 * */
 
 
-const finishData = document.querySelector("#finish-data")
-const saludo = document.querySelector("h1")
+const finishDataButton = document.querySelector("#finish-data")
+const greeting = document.querySelector("h1")
 
 
 
-finishData.onclick = function() {
+finishDataButton.onclick = function() {
 const firstName = document.querySelector("#first-name").value
 const secondName = document.querySelector("#second-name").value
 const surname = document.querySelector("#surname").value

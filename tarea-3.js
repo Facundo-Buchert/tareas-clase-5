@@ -6,63 +6,41 @@
 // al apretar el botón "Calcular tiempo total", debe mostrar en un
 // <strong> pre-creado el tiempo total de los videos.
 
-const calculateTotalTime = document.querySelector("#calculate-total-time")
-let finalMessagge = document.querySelector("h2")
-let hours
-let minutes
-let seconds
+const $calculateTotalTime = document.querySelector("#calculate-total-time")
+const $totalTimeText = document.querySelector("strong")
 
-function totalHours() {
-    const hour1 = Number(document.querySelector("#hours-1").value)
-    const hour2 = Number(document.querySelector("#hours-2").value)
-    const hour3 = Number(document.querySelector("#hours-3").value)
-    const hour4 = Number(document.querySelector("#hours-4").value)
-    const hour5 = Number(document.querySelector("#hours-5").value)
-    hours = hour1 + hour2 + hour3 + hour4 + hour5 
-}
+$calculateTotalTime.onclick = function(){
+    const hours = document.querySelectorAll(".hours")
+    const minutes = document.querySelectorAll(".minutes")
+    const seconds = document.querySelectorAll (".seconds")
+    let totalHours = calculateTime(hours)
+    let totalMinutes = calculateTime(minutes)
+    let totalSeconds = calculateTime(seconds)
 
-function totalMinutes() {
-    const minute1 = Number(document.querySelector("#minutes-1").value)
-    const minute2 = Number(document.querySelector("#minutes-2").value)
-    const minute3 = Number(document.querySelector("#minutes-3").value)
-    const minute4 = Number(document.querySelector("#minutes-4").value)
-    const minute5 = Number(document.querySelector("#minutes-5").value)
-    minutes = minute1 + minute2 + minute3 + minute4 + minute5 
-}
-
-function totalSeconds() { 
-    const second1 = Number(document.querySelector("#seconds-1").value)
-    const second2 = Number(document.querySelector("#seconds-2").value)
-    const second3 = Number(document.querySelector("#seconds-3").value)
-    const second4 = Number(document.querySelector("#seconds-4").value)
-    const second5 = Number(document.querySelector("#seconds-5").value)
-    seconds = second1 + second2 + second3 + second4 + second5 
-}
-
-calculateTotalTime.onclick = function () {
- 
-    totalSeconds()
-
-    if(seconds >= 60){
-        while(seconds >= 60){
-            seconds = seconds - 60
-            minutes++
-        } 
+    function calculateTime(time) {
+    let finalTime = 0;
+    for (let i = 0; i < time.length; i++) {
+      finalTime += Number(time[i].value);
     }
+    return finalTime;
+  }
 
-    totalMinutes()
-    
-    if (minutes >= 60){    
-        while(minutes >= 60){
-            minutes = minutes - 60
-            hours++
+    if(totalSeconds >= 60){
+        while(totalSeconds >= 60){
+            totalSeconds = totalSeconds - 60
+            totalMinutes++
         }
     }
-    totalHours()
 
+    if(totalMinutes >= 60){
+        while(totalMinutes >= 60){
+            totalMinutes = totalMinutes - 60
+            totalHours++
+        }
+    }
 
-
-    finalMessagge.textContent = `El tiempo total es de ${hours} horas, ${minutes} minutos y ${seconds} segundos!`
+    const finalMessagge = document.querySelector("h2")
+    finalMessagge.textContent = `El tiempo total es de ${totalHours} horas, ${totalMinutes} minutos y ${totalSeconds} segundos!`
 
 }
 

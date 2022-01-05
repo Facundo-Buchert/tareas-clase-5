@@ -57,26 +57,26 @@ biggestNumber = bigNumber(generatedArray)
 
 
 
-function numeroMasRepetido(array) {
-    let contadorRepeticiones = 1;
-    let apariciones = 0;
-    let masRepetido;
+function mostRepeatedNumber(array) {
+    let repetitionCounter = 1;
+    let appearances = 0;
+    let moreRepeated;
     for (let i = 0; i < array.length; i++) {
       for (let j = i; j < array.length; j++) {
         if (array[i] === array[j]) {
-          apariciones++;
+          apppearances++;
         }
-        if (apariciones > contadorRepeticiones) {
-          contadorRepeticiones = apariciones;
-          masRepetido = array[i];
+        if (appearances > repetitionCounter) {
+          repetitionCounter = appearances;
+          moreRepeated = array[i];
         }
       }
-      apariciones = 0;
+      appearances = 0;
     }
-    return masRepetido;
+    return moreRepeated;
 }
 
-masRepetido = numeroMasRepetido(generatedArray)
+moreRepeated = mostRepeatedNumber(generatedArray)
 
 
 
